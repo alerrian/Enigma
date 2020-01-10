@@ -1,5 +1,5 @@
 require_relative '../lib/key_gen'
-# require_relative '../lib/date_gen'
+require_relative '../lib/date_gen'
 
 class Enigma
   def encrypt(message, key, date)
