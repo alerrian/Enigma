@@ -10,6 +10,6 @@ class Enigma
   end
 
   def decrypt(message, key, date)
-
+    # logic
   end
 end
