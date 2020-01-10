@@ -9,4 +9,10 @@ class KeyGenTest < Minitest::Test
   def test_a_key_generator_exists
     assert_instance_of KeyGen, @key_gen
   end
+
+  def test_default_keys_are_random_integers
+    @key_gen.keys.each do |key|
+      assert_includes (0...9), key
+    end
+  end
 end

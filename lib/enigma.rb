@@ -1,5 +1,5 @@
 class Enigma
-  def initialize(key, date, message)
+  def initialize
     @key = Key.new
     @date = Date.new
     @message = message
