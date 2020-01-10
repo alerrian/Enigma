@@ -1,7 +1,7 @@
 class KeyGen
   attr_reader :key
 
-  def initialize(key = Array.new(5) { rand(10) })
+  def initialize(key = Array.new(5) { rand(10) }.join)
     @key = key
   end
 
