@@ -3,8 +3,8 @@ require_relative '../lib/key_gen'
 
 class Enigma
   def encrypt(message, key, date)
-    gen_key = KeyGen.new(key)
-    gen_key.split_key
+    key = KeyGen.new(key)
+    key.generate_key
     # gen_date = DateGen.new(date)
 
     require 'pry'; binding.pry

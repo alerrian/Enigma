@@ -5,7 +5,7 @@ class KeyGen
     @key = key
   end
 
-  def split_key
+  def generate_key
     split = []
     @key.split('').each_cons(2) { |char| split.push(char.join.to_i) }
 
