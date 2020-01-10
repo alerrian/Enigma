@@ -11,8 +11,8 @@ class KeyGenTest < Minitest::Test
   end
 
   def test_default_keys_are_random_integers
-    @key_gen.keys.each do |key|
-      assert_includes (0...9), key
+    @key_gen.key.each do |key|
+      assert_includes (0..9), key
     end
   end
 end
