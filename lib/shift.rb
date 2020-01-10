@@ -5,5 +5,6 @@ class Shift
 
   def initialize(key, date)
     @key = KeyGen.new(key)
+    @date = DateGen.new(date)
   end
 end

@@ -3,8 +3,6 @@ require_relative '../lib/key_gen'
 
 class Enigma
   def encrypt(message, key, date)
-    # gen_date = DateGen.new(date)
-
     require 'pry'; binding.pry
   end
 
