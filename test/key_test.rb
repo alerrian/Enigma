@@ -3,7 +3,7 @@ require_relative '../lib/key_gen'
 
 class KeyGenTest < Minitest::Test
   def setup
-    @key_gen = KeyGen.new
+    @key_gen = KeyGen.new('02715')
   end
 
   def test_a_key_generator_exists
@@ -14,5 +14,9 @@ class KeyGenTest < Minitest::Test
     @key_gen.key.each do |key|
       assert_includes (0..9), key
     end
+  end
+
+  def test_keys_are_combined
+    expected = []
   end
 end

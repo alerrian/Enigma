@@ -11,10 +11,22 @@ class NewClassTest < Minitest::Test
   end
 
   def test_enigma_can_encrypt
-    # add test for encryption
+    expected = {
+      encryption: 'keder ohulw',
+      key: '02715',
+      date: '040895'
+    }
+
+    assert_equal expected, @new_enigma.encrypt('hello world', '02715', '040895')
   end
 
   def test_enigma_can_decrypt
-    # add test for decrypt
+    expected = {
+      decryption: 'hello world',
+      key: '02715',
+      date: '040895'
+    }
+
+    assert_equal expected, @new_enigma.encrypt('keder ohulw', '02715', '040895')
   end
 end

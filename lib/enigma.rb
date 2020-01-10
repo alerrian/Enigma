@@ -1,12 +1,13 @@
-class Enigma
-  def initialize
-    @key = Key.new
-    @date = Date.new
-    @message = message
-  end
+require_relative '../lib/key_gen'
+# require_relative '../lib/date_gen'
 
-  def encrypt(message = @message, key = @key, date = @date)
-    # logic
+class Enigma
+  def encrypt(message, key, date)
+    gen_key = KeyGen.new(key)
+    gen_key.split_key
+    # gen_date = DateGen.new(date)
+
+    require 'pry'; binding.pry
   end
 
   def decrypt(message, key, date)
