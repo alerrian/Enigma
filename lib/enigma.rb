@@ -11,14 +11,11 @@ class Enigma
 
   def encrypt(message, key=generate_key, date)
     shift = Shift.new(key, date)
-
-    hash = {
+    {
       encryption: message,
       key: shift.key.generate_key,
       date: shift.date.generate_date
     }
-
-    require 'pry'; binding.pry
   end
 
   def decrypt(message, key, date)
