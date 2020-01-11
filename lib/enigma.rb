@@ -1,6 +1,5 @@
 require_relative 'key_gen'
 require_relative 'date_gen'
-require_relative 'shift'
 
 class Enigma
   attr_reader :rand_key
@@ -11,11 +10,13 @@ class Enigma
   end
 
   def encrypt(message, key = @rand_key.key.to_s, date = @today)
-    shift = Shift.new(key, date)
+    in_key = KeyGen.new(key)
+    in_date = DateGen.new(date)
+
     {
       encryption: message,
-      key: shift.key.key,
-      date: date
+      key: in_key.key,
+      date: in_date.date
     }
   end
 

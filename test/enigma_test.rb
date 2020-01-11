@@ -1,7 +1,7 @@
 require_relative 'test_helper'
 require_relative '../lib/enigma'
 
-class NewClassTest < Minitest::Test
+class EnigmaTest < Minitest::Test
   def setup
     @new_enigma = Enigma.new
   end
