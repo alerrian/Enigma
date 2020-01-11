@@ -9,4 +9,25 @@ class NewClassTest < Minitest::Test
   def test_enigma_exists
     assert_instance_of Enigma, @new_enigma
   end
+
+  def test_enigma_can_encrypt
+    expected = {
+      encryption: 'keder ohulw',
+      key: '02715',
+      date: '040895'
+    }
+
+    assert_equal expected, @new_enigma.encrypt('hello world', '02715', '040895')
+  end
+
+  def test_enigma_can_decrypt
+    skip
+    expected = {
+      decryption: 'hello world',
+      key: '02715',
+      date: '040895'
+    }
+
+    assert_equal expected, @new_enigma.decrypt('keder ohulw', '02715', '040895')
+  end
 end
