@@ -7,9 +7,10 @@ class Enigma
 
   def initialize
     @rand_key = KeyGen.new
+    @today = DateGen.new
   end
 
-  def encrypt(message, key = @rand_key.key.to_s, date)
+  def encrypt(message, key = @rand_key.key.to_s, date = @today)
     shift = Shift.new(key, date)
     {
       encryption: message,
