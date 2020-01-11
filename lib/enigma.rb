@@ -1,5 +1,6 @@
-require_relative '../lib/key_gen'
-require_relative '../lib/date_gen'
+require_relative 'key_gen'
+require_relative 'date_gen'
+require_relative 'shift'
 
 class Enigma
   attr_reader :rand_key
@@ -9,6 +10,9 @@ class Enigma
   end
 
   def encrypt(message, key=@rand_key.generate_key, date)
+    shift = Shift.new(key, date)
+
+    
     require 'pry'; binding.pry
   end
 
