@@ -9,10 +9,15 @@ class Enigma
     @rand_key = KeyGen.new
   end
 
-  def encrypt(message, key=@rand_key.generate_key, date)
+  def encrypt(message, key=generate_key, date)
     shift = Shift.new(key, date)
 
-    
+    hash = {
+      encryption: message,
+      key: shift.key.generate_key,
+      date: shift.date.generate_date
+    }
+
     require 'pry'; binding.pry
   end
 

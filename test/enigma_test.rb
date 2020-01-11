@@ -21,12 +21,13 @@ class NewClassTest < Minitest::Test
   end
 
   def test_enigma_can_decrypt
+    skip
     expected = {
       decryption: 'hello world',
       key: '02715',
       date: '040895'
     }
 
-    assert_equal expected, @new_enigma.encrypt('keder ohulw', '02715', '040895')
+    assert_equal expected, @new_enigma.decrypt('keder ohulw', '02715', '040895')
   end
 end
