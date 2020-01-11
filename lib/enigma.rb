@@ -12,7 +12,7 @@ class Enigma
   def encrypt(message, key = @rand_key.key.to_s, date = @today)
     in_key = KeyGen.new(key)
     in_date = DateGen.new(date)
-
+    
     {
       encryption: message,
       key: in_key.key,
