@@ -9,7 +9,7 @@ class Enigma
     @rand_key = KeyGen.new
   end
 
-  def encrypt(message, key=generate_key, date)
+  def encrypt(message, key = generate_key, date)
     shift = Shift.new(key, date)
     {
       encryption: message,
