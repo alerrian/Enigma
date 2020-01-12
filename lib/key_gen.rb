@@ -1,4 +1,8 @@
+require_relative './modules/createable'
+
 class KeyGen
+  include Createable
+
   attr_reader :key
 
   def initialize(key = Array.new(5) { rand(10) }.join)
