@@ -1,5 +1,6 @@
 require_relative 'test_helper'
 require_relative '../lib/enigma'
+require 'mocha/minitest'
 
 class EnigmaTest < Minitest::Test
   def setup
@@ -25,7 +26,6 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_enigma_can_decrypt
-    skip
     expected = {
       decryption: 'hello world',
       key: '02715',
@@ -61,10 +61,10 @@ class EnigmaTest < Minitest::Test
       ["r", "l", "d"]
     ]
 
-    assert_equal expected, @new_enigma.shift_letters(message, shifts)
+    assert_equal expected, @new_enigma.shift_letters(message, shifts, 'e')
   end
 
-  def test_enigma_shift_can_handle_other_chars
+  def test_enigma_shift_can_encry_other_chars
     expected = "keder, orrdx"
 
     shifts = [3, 27, 73, 20]
@@ -75,6 +75,28 @@ class EnigmaTest < Minitest::Test
       ["o", "r", "l", "d"]
     ]
 
-    assert_equal expected, @new_enigma.shift_letters(message, shifts)
+    assert_equal expected, @new_enigma.shift_letters(message, shifts, 'e')
+  end
+
+  def test_enigma_can_decry_other_chars
+    expected = "hello, world"
+
+    shifts = [3, 27, 73, 20]
+    
+    message = [
+      ["k", "e", "d", "e"],
+      ["r", "," " ", "o"],
+      ["r", "r", "d", "x"]
+    ]
+
+    assert_equal expected, @new_enigma.shift_letters(message, shifts, 'd')
+  end
+  def test_enigma_can_check_if_in_alphabet
+    assert_equal true, @new_enigma.in_alphabet?('e')
+    assert_equal false, @new_enigma.in_alphabet?(',')
+  end
+
+  def test_enigma_can_rotate_char
+    assert_equal 'b', @new_enigma.rotate_char('a', 1)
   end
 end
