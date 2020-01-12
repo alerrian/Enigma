@@ -18,7 +18,7 @@ class Enigma
     }
   end
 
-  def decrypt(message, key, date)
+  def decrypt(message, key = @rand_key.key.to_s, date = @today)
     {
       decryption: shift_letters(split_message(message), create_shift(key, date), 'd'),
       key: key,

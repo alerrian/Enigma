@@ -1,5 +1,6 @@
 require_relative 'test_helper'
 require_relative '../lib/enigma'
+require 'mocha/minitest'
 
 class EnigmaTest < Minitest::Test
   def setup
