@@ -10,7 +10,7 @@ class Enigma
     @today = DateGen.new
   end
 
-  def encrypt(message, key = @rand_key.key.to_s, date = @today)    
+  def encrypt(message, key = @rand_key.key.to_s, date = @today.date.to_s)    
     {
       encryption: shift_letters(split_message(message), create_shift(key, date), 'e'),
       key: key,
@@ -18,7 +18,7 @@ class Enigma
     }
   end
 
-  def decrypt(message, key = @rand_key.key.to_s, date = @today)
+  def decrypt(message, key = @rand_key.key.to_s, date = @today.date.to_s)
     {
       decryption: shift_letters(split_message(message), create_shift(key, date), 'd'),
       key: key,
