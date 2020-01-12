@@ -30,4 +30,15 @@ class DateTest < Minitest::Test
   def test_can_retrieve_last_4_from_squared_date
     assert_equal [4, 4, 0, 0], @date_gen.generate_offset
   end
+
+  def test_date_generator_can_create_hash_offset
+    expected = {
+      "A"=>4,
+      "B"=>4,
+      "C"=>0,
+      "D"=>0
+    }
+
+    assert_equal expected, @date_gen.create_hash([4, 4, 0, 0])
+  end
 end

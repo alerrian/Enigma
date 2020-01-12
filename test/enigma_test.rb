@@ -1,6 +1,5 @@
 require_relative 'test_helper'
 require_relative '../lib/enigma'
-require 'mocha/minitest'
 
 class EnigmaTest < Minitest::Test
   def setup
@@ -13,6 +12,11 @@ class EnigmaTest < Minitest::Test
 
   def test_enigma_has_an_alphabet
     assert_equal ('a'..'z').to_a.push(' '), @new_enigma.ALPHABET
+  end
+
+  def test_enigma_creates_default_keys_and_dates
+    assert_instance_of KeyGen, @new_enigma.rand_key
+    assert_instance_of DateGen, @new_enigma.today
   end
 
   def test_enigma_can_encrypt

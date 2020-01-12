@@ -28,4 +28,15 @@ class KeyGenTest < Minitest::Test
     new_key = KeyGen.new('02715')
     assert_equal expected, new_key.generate_key
   end
+
+  def test_key_can_make_key_hash
+    expected = {
+      "A"=>2,
+      "B"=>27,
+      "C"=>71,
+      "D"=>15
+    }
+
+    assert_equal expected, @key_gen.create_hash([2, 27, 71, 15])
+  end
 end
