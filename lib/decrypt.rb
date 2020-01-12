@@ -8,7 +8,7 @@ incoming_txt = handle.read.chomp
 
 handle.close
 
-decrypted_string = new_enigma.decrypt(incoming_txt, ARGV[2], ARGV[3])
+decrypted_string = new_enigma.decrypt(incoming_txt, *ARGV[2..3])
 
 writer = File.open(ARGV[1], "w")
 
