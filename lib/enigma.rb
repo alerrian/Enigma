@@ -10,17 +10,26 @@ class Enigma
   end
 
   def encrypt(message, key = @rand_key.key.to_s, date = @today)
-    in_key = KeyGen.new(key)
-    in_date = DateGen.new(date)
+    create_shift(key, date)
     
     {
       encryption: message,
-      key: in_key.key,
-      date: in_date.date
+      key: key,
+      date: date
     }
   end
 
   def decrypt(message, key, date)
     # logic
+  end
+
+  def create_shift(key, date)
+    in_key = KeyGen.new(key)
+    in_date = DateGen.new(date)
+
+    keys = in_key.create_hash(in_key.generate_key)
+    offsets = in_date.create_hash(in_date.generate_offset)
+
+    keys.merge(offsets){ |hash_keys, key_val, off_val| key_val + off_val }
   end
 end

@@ -1,4 +1,8 @@
+require_relative './modules/createable'
+
 class DateGen
+  include Createable
+
   attr_reader :date
 
   def initialize(date = DateTime.now.strftime('%d%m%y'))
