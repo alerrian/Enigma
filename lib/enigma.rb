@@ -31,10 +31,10 @@ class Enigma
     keys = key.create_hash(key.generate_key)
     offsets = date.create_hash(date.generate_offset)
 
-    keys.merge(offsets){ |hash_keys, key_val, off_val| key_val + off_val }
+    keys.merge(offsets) { |_keys, key_val, off_val| (key_val + off_val)%28 }.values
   end
 
-  def break_message(message)
+  def separate_message(message)
     broken_chars = []
 
     message.chars.each_slice(4) { |char_group| broken_chars.push(char_group) }

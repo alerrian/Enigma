@@ -36,7 +36,7 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_enigma_can_generate_shift
-    shift_hash = {"A"=>3, "B"=>27, "C"=>73, "D"=>20}
+    shift_hash = [3, 27, 17, 20]
 
     assert_equal shift_hash, @new_enigma.create_shift('02715', '040895')
   end
@@ -47,7 +47,17 @@ class EnigmaTest < Minitest::Test
       ["o", " ", "w", "o"],
       ["r", "l", "d"]
     ]
-    
-    assert_equal expected, @new_enigma.break_message('hello world')
+
+    assert_equal expected, @new_enigma.separate_message('hello world')
+  end
+
+  def test_enigma_can_shift_characters
+    expected = [
+      ["k", "e", "d", "e"], 
+      ["r", " ", "o", "h"],
+      ["u", "l", "w"]
+    ]
+
+    assert_equal expected, @new_enigma.shift_letters(message, shifts)
   end
 end
