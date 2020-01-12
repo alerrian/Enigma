@@ -24,11 +24,11 @@ class Enigma
   end
 
   def create_shift(key, date)
-    in_key = KeyGen.new(key)
-    in_date = DateGen.new(date)
+    key = KeyGen.new(key)
+    date = DateGen.new(date)
 
-    keys = in_key.create_hash(in_key.generate_key)
-    offsets = in_date.create_hash(in_date.generate_offset)
+    keys = key.create_hash(key.generate_key)
+    offsets = date.create_hash(date.generate_offset)
 
     keys.merge(offsets){ |hash_keys, key_val, off_val| key_val + off_val }
   end
