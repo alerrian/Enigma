@@ -10,9 +10,9 @@ class Enigma
     @today = DateGen.new
   end
 
-  def encrypt(message, key = @rand_key.key.to_s, date = @today.date.to_s)    
+  def encrypt(message, key = @rand_key.key.to_s, date = @today.date.to_s)
     {
-      encryption: encrypt_letters(split_message(message), create_shift(key, date)),
+      encryption: encrypt_letters(split_message(message), shift(key, date)),
       key: key,
       date: date
     }
@@ -20,13 +20,13 @@ class Enigma
 
   def decrypt(message, key = @rand_key.key.to_s, date = @today.date.to_s)
     {
-      decryption: decrypt_letters(split_message(message), create_shift(key, date)),
+      decryption: decrypt_letters(split_message(message), shift(key, date)),
       key: key,
       date: date
     }
   end
 
-  def create_shift(key, date)
+  def shift(key, date)
     key = KeyGen.new(key)
     date = DateGen.new(date)
 
