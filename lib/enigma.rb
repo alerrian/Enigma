@@ -37,11 +37,11 @@ class Enigma
   end
 
   def split_message(message)
-    chars = []
+    group_chars = []
 
-    message.downcase.chars.each_slice(4) { |char_group| chars.push(char_group) }
+    message.downcase.chars.each_slice(4) { |char_group| group_chars.push(char_group) }
 
-    chars
+    group_chars
   end
 
   def encrypt_letters(chars, shifts)
