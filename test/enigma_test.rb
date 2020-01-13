@@ -42,7 +42,7 @@ class EnigmaTest < Minitest::Test
   def test_enigma_can_generate_shift
     shift_hash = [3, 27, 73, 20]
 
-    assert_equal shift_hash, @new_enigma.create_shift('02715', '040895')
+    assert_equal shift_hash, @new_enigma.shift('02715', '040895')
   end
 
   def test_enigma_can_break_messages
