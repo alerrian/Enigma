@@ -12,7 +12,7 @@ class Enigma
 
   def encrypt(message, key = @rand_key.key.to_s, date = @today.date.to_s)    
     {
-      encryption: shift_letters(split_message(message), create_shift(key, date), 'e'),
+      encryption: encrypt_letters(split_message(message), create_shift(key, date)),
       key: key,
       date: date
     }
@@ -20,7 +20,7 @@ class Enigma
 
   def decrypt(message, key = @rand_key.key.to_s, date = @today.date.to_s)
     {
-      decryption: shift_letters(split_message(message), create_shift(key, date), 'd'),
+      decryption: decrypt_letters(split_message(message), create_shift(key, date)),
       key: key,
       date: date
     }
@@ -37,33 +37,39 @@ class Enigma
   end
 
   def split_message(message)
-    broken_chars = []
+    chars = []
 
-    message.downcase.chars.each_slice(4) { |char_group| broken_chars.push(char_group) }
+    message.downcase.chars.each_slice(4) { |char_group| chars.push(char_group) }
 
-    broken_chars
+    chars
   end
 
-  def shift_letters(broken_chars, shifts, e_d_flag)
+  def encrypt_letters(chars, shifts)
     encry_message = []
-    broken_chars.each do |char_group|
+    chars.each do |char_group|
       char_group.each_with_index do |char, index|
-        if e_d_flag == 'e'
-          if in_alphabet?(char)
-            encry_message.push(rotate_char(char, shifts[index]))
-          else
-            encry_message.push(char)
-          end
-        elsif e_d_flag == 'd'
-          if in_alphabet?(char)
-            encry_message.push(rotate_char(char, -shifts[index]))
-          else
-            encry_message.push(char)
-          end
+        if in_alphabet?(char)
+          encry_message.push(rotate_char(char, shifts[index]))
+        else
+          encry_message.push(char)
         end
       end
     end
     encry_message.join
+  end
+
+  def decrypt_letters(chars, shifts)
+    decry_message = []
+    chars.each do |char_group|
+      char_group.each_with_index do |char, index|
+        if in_alphabet?(char)
+          decry_message.push(rotate_char(char, -shifts[index]))
+        else
+          decry_message.push(char)
+        end
+      end
+    end
+    decry_message.join
   end
 
   def in_alphabet?(char)
