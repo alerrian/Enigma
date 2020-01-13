@@ -39,7 +39,9 @@ class Enigma
   def split_message(message)
     group_chars = []
 
-    message.downcase.chars.each_slice(4) { |char_group| group_chars.push(char_group) }
+    message.downcase.chars.each_slice(4) do |char_group|
+      group_chars.push(char_group)
+    end
 
     group_chars
   end

@@ -47,55 +47,55 @@ class EnigmaTest < Minitest::Test
 
   def test_enigma_can_break_messages
     expected = [
-      ["h", "e", "l", "l"],
-      ["o", " ", "w", "o"],
-      ["r", "l", "d"]
+      ['h', 'e', 'l', 'l'],
+      ['o', ' ', 'w', 'o'],
+      ['r', 'l', 'd']
     ]
 
     assert_equal expected, @new_enigma.split_message('hello world')
   end
 
   def test_enigma_can_shift_characters
-    expected = "keder ohulw"
+    expected = 'keder ohulw'
 
     shifts = [3, 27, 73, 20]
     message = [
-      ["h", "e", "l", "l"],
-      ["o", " ", "w", "o"],
-      ["r", "l", "d"]
+      ['h', 'e', 'l', 'l'],
+      ['o', ' ', 'w', 'o'],
+      ['r', 'l', 'd']
     ]
 
     assert_equal expected, @new_enigma.encrypt_letters(message, shifts)
   end
 
   def test_enigma_shift_can_encry_other_chars
-    expected = "keder, orrdx"
+    expected = 'keder ohulw!'
 
     shifts = [3, 27, 73, 20]
-    
+
     message = [
-      ["h", "e", "l", "l"],
-      ["o", "," " ", "w"],
-      ["o", "r", "l", "d"]
+      ['h', 'e', 'l', 'l'],
+      ['o', ' ', 'w', 'o'],
+      ['r', 'l', 'd', '!']
     ]
 
     assert_equal expected, @new_enigma.encrypt_letters(message, shifts)
   end
 
   def test_enigma_can_decry_other_chars
-    expected = "hello, world"
+    expected = 'hello world!'
 
     shifts = [3, 27, 73, 20]
-    
+
     message = [
-      ["k", "e", "d", "e"],
-      ["r", "," " ", "o"],
-      ["r", "r", "d", "x"]
+      ['k', 'e', 'd', 'e'],
+      ['r', ' ', 'o', 'h'],
+      ['u', 'l', 'w', '!']
     ]
 
     assert_equal expected, @new_enigma.decrypt_letters(message, shifts)
   end
-  
+
   def test_enigma_can_check_if_in_alphabet
     assert_equal true, @new_enigma.in_alphabet?('e')
     assert_equal false, @new_enigma.in_alphabet?(',')
