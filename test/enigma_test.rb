@@ -39,6 +39,16 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, @new_enigma.decrypt('keder ohulw', '02715', '040895')
   end
 
+  def test_enigma_can_crack
+    expected = {
+      decryption: 'hello world end',
+      date: '291018',
+      key: '08304'
+    }
+
+    assert_equal expected, @new_enigma.crack('vjqtbeaweqihssi', '291018')
+  end
+
   def test_enigma_can_generate_shift
     shift_hash = [3, 27, 73, 20]
 
