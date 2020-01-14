@@ -27,9 +27,19 @@ class Enigma
   end
 
   def crack(message, date = @today.date.to_s)
-    while decrypt(message, date)[:decryption][-4..1] != " end"
-      decrypt(message)
+    key = "00000"
+    cracked_message = message
+
+    until decrypt(message, key, date)[:decryption][-4..-1] == " end"
+      key = (key.to_i + 1).to_s.rjust(5, "0")
+      cracked_message = decrypt(message, key, date)[:decryption]
     end
+
+    {
+      decryption: cracked_message,
+      date: date,
+      key: key
+    }
   end
 
   def shift(key, date)
