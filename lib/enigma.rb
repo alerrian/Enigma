@@ -35,11 +35,7 @@ class Enigma
       cracked_message = decrypt(message, key, date)[:decryption]
     end
 
-    {
-      decryption: cracked_message,
-      date: date,
-      key: key
-    }
+    { decryption: cracked_message, date: date, key: key }
   end
 
   def shift(key, date)
