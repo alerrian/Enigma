@@ -26,6 +26,12 @@ class Enigma
     }
   end
 
+  def crack(message, date = @today.date.to_s)
+    while decrypt(message, date)[:decryption][-4..1] != " end"
+      decrypt(message)
+    end
+  end
+
   def shift(key, date)
     key = KeyGen.new(key)
     date = DateGen.new(date)
