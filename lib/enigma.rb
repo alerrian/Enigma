@@ -30,7 +30,7 @@ class Enigma
     key = '00000'
     cracked_message = message
 
-    until decrypt(message, key, date)[:decryption][-4..-1] == ' end' || key == '10000'
+    until decrypt(message, key, date)[:decryption][-4..-1] == ' end'
       key = (key.to_i + 1).to_s.rjust(5, '0')
       cracked_message = decrypt(message, key, date)[:decryption]
     end
